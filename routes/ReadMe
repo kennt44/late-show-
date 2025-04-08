@@ -1,0 +1,81 @@
+This project is a Flask-based API for tracking episodes, guests, and their appearances. It provides endpoints for managing episodes, guests, and appearances while adhering to REST principles.
+
+Setup
+Clone this repository:
+
+bash
+git clone https://github.com/username/lateshow-firstname-lastname.git
+Navigate to the project directory:
+
+bash
+cd lateshow-firstname-lastname
+Create a virtual environment and install dependencies:
+
+bash
+pipenv install
+pipenv shell
+Set environment variables for Flask:
+
+bash
+export FLASK_APP=app.py
+export FLASK_ENV=development
+Run migrations to set up the database:
+
+bash
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+Seed the database with sample data:
+
+Ensure you have the seed.csv file in the seed/ folder.
+
+Run the seed script (if implemented).
+
+Dependencies
+The following Python libraries are required for this project:
+
+Flask
+
+Flask-SQLAlchemy
+
+Flask-Migrate
+
+pytest
+
+pytest-flask
+
+python-dotenv
+
+psycopg2-binary (if using PostgreSQL)
+
+Install all dependencies by running:
+
+bash
+pip install -r requirements.txt
+Models
+Episode:
+
+Attributes: id, date, number
+
+Relationships: has many appearances
+
+Guest:
+
+Attributes: id, name, occupation
+
+Relationships: has many appearances
+
+Appearance:
+
+Attributes: id, rating, episode_id, guest_id
+
+Relationships: belongs to an episode, belongs to a guest
+
+Validations:
+
+rating must be between 1 and 5 (inclusive).
+
+Routes
+GET /episodes
+Returns a list of all episodes in the following format:
+
